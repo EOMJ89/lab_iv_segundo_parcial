@@ -1,0 +1,11 @@
+<!-- <p>inscripcion-container works!</p> -->
+<div class="d-flex justify-content-center extra-top extra-bottom">
+  <div class="alert alert-danger col-10" *ngIf="this._mensaje != ''">
+    {{ this._mensaje }}
+  </div>
+</div>
+<app-inscripcion-lazy
+  [materias]="this.materias"
+  (enviarFormulario)="inscribir($event)"
+>
+</app-inscripcion-lazy>

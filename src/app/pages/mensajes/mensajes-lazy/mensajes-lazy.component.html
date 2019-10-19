@@ -1,0 +1,40 @@
+<!-- <p>mensajes-lazy works!</p> -->
+<div *ngIf="this.form" class="container">
+    <div class="row">
+        <form [formGroup]="this.form" class="col-12">
+            <div class="form-group">
+                <label>Mensaje</label>
+                <input type="text" class="form-control" formControlName="mensaje" [ngClass]="{
+                        'border border-danger': !form.controls.mensaje.valid && form.controls.mensaje.touched,
+                        'border border-success': form.controls.mensaje.valid
+                    }">
+            </div>
+            <div class="alert alert-danger" *ngIf="!form.controls.mensaje.valid && form.controls.mensaje.touched">
+                <div *ngIf="form.controls.mail.errors.required">El nombre es requerido.</div>
+            </div>
+            <div class="d-flex justify-content-around">
+                <button type="button" class="btn btn-primary" (click)="enviar()"
+                    [disabled]="!this.form.valid">Enviar</button>
+                <button type="reset" class="btn btn-warning">Limpiar</button>
+                <a routerLinkActive="active" routerLink="/home-alumno" class="btn btn-danger">Cancelar</a>
+            </div>
+        </form>
+    </div>
+    <div class="row extra-top">
+        <h3>Mensajes</h3>
+        <div *ngFor="let mensajeA of this.mensajes" class="col-12">
+            <div class="d-flex" [ngClass]="{
+                'flex-row': mensajeA.emisor != this.authServ.user.key,
+                'flex-row-reverse': mensajeA.emisor == this.authServ.user.key
+            }">
+                <div class="alert" [ngClass]="{
+                    'alert-secondary text-left': mensajeA.emisor != this.authServ.user.key,
+                    'alert-primary text-right': mensajeA.emisor == this.authServ.user.key
+                }">
+                    <p>{{mensajeA.mensaje}}</p>
+                    <p class="font-italic">{{mensajeA.fecha | date:short}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

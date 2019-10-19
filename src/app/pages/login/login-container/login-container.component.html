@@ -1,0 +1,5 @@
+<!-- <p>login-container works!</p> -->
+<app-login-lazy (enviarFormulario)="loguear($event)"></app-login-lazy>
+<div class="d-flex justify-content-center extra-top">
+    <div class="alert alert-danger col-10" *ngIf="this._mensaje != ''">{{this._mensaje}}</div>
+</div>

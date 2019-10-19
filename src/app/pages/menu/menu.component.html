@@ -1,0 +1,7 @@
+<!-- <p>menu works!</p> -->
+<div *ngIf="this.authServ.user != null" class="d-flex justify-content-around extra-top extra-bottom">
+    <span>
+        Correo: {{this.authServ.user.mail}}
+    </span>
+    <button type="button" class="btn btn-danger" (click)="desloguear()">Cerrar Sesión</button>
+</div>

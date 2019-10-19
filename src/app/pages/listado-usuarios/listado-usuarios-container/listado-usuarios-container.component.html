@@ -1,0 +1,10 @@
+<!-- <p>listado-usuarios-container works!</p> -->
+<div class="d-flex justify-content-around extra-bottom">
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary" (click)="mostrar('todo')">Todos</button>
+        <button type="button" class="btn btn-secondary" (click)="mostrar('alumno')">Alumnos</button>
+        <button type="button" class="btn btn-secondary" (click)="mostrar('profesor')">Profesores</button>
+        <button type="button" class="btn btn-secondary" (click)="mostrar('admin')">Administradores</button>
+    </div>
+</div>
+<app-listado-usuarios-lazy [usuarios]="this.usuarios"></app-listado-usuarios-lazy>

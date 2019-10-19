@@ -1,0 +1,42 @@
+<!-- <p>registro-lazy works!</p> -->
+<div *ngIf="this.form" class="container">
+    <form [formGroup]="this.form">
+        <div class="form-group">
+            <label>Correo</label>
+            <input type="email" class="form-control" formControlName="mail" [ngClass]="{
+                'border border-danger': !form.controls.mail.valid && form.controls.mail.touched,
+                'border border-success': form.controls.mail.valid
+            }">
+        </div>
+        <div class="alert alert-danger" *ngIf="!form.controls.mail.valid && form.controls.mail.touched">
+            <div *ngIf="form.controls.mail.errors.required">El correo es requerido.</div>
+            <div *ngIf="form.controls.mail.errors.email">El correo no tiene el formato indicado.</div>
+        </div>
+        <div class="form-group">
+            <label>Clave</label>
+            <input type="password" class="form-control" formControlName="clave" [ngClass]="{
+                'border border-danger': !form.controls.clave.valid && form.controls.clave.touched,
+                'border border-success': form.controls.clave.valid
+            }">
+        </div>
+        <div class="alert alert-danger" *ngIf="!form.controls.clave.valid && form.controls.clave.touched">
+            <div *ngIf="form.controls.clave.errors.required">La clave es requerida.</div>
+            <div *ngIf="form.controls.clave.errors.minlength != undefined">La clave no tiene el largo requerido.</div>
+        </div>
+        <div class="form-group">
+            <label>Tipo</label>
+            <select class="form-control" formControlName="tipo" [ngClass]="{
+                'border border-danger': !form.controls.tipo.valid && form.controls.tipo.touched,
+                'border border-success': form.controls.tipo.valid
+            }">
+                <option [value]="tipoA" *ngFor="let tipoA of this.tipos">{{tipoA | titlecase}}</option>
+            </select>
+        </div>
+        <div class="d-flex justify-content-around">
+            <button type="button" class="btn btn-primary" (click)="registrar()"
+                [disabled]="!this.form.valid">Registrarse</button>
+            <button type="reset" class="btn btn-warning">Limpiar</button>
+            <a routerLinkActive="active" routerLink="/login" class="btn btn-secondary">Iniciar Sesión</a>
+        </div>
+    </form>
+</div>

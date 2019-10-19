@@ -1,0 +1,7 @@
+<!-- <p>modificar-materia-container works!</p> -->
+<div class="d-flex justify-content-center extra-top">
+        <div class="alert alert-danger col-10" *ngIf="this._mensaje != ''">{{this._mensaje}}</div>
+    </div>
+    <app-modificar-materia-lazy (enviarFormulario)="modificar($event)" [materia]="this.materia"
+    [profesores]="this.profesores">
+</app-modificar-materia-lazy>

@@ -1,0 +1,6 @@
+<!-- <p>alta-materia-container works!</p> -->
+<div class="d-flex justify-content-center extra-top">
+    <div class="alert alert-danger col-10" *ngIf="this._mensaje != ''">{{this._mensaje}}</div>
+</div>
+<app-alta-materia-lazy (enviarFormulario)="agregarMateria($event)" [profesores]="this.profesores">
+</app-alta-materia-lazy>

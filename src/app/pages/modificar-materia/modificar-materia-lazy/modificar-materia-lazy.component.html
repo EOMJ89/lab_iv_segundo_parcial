@@ -1,0 +1,52 @@
+<!-- <p>modificar-materia-lazy works!</p> -->
+<div *ngIf="this.form && this.profesores != undefined" class="container">
+    <form [formGroup]="this.form">
+        <div class="form-group">
+            <label>Nombre</label>
+            <input type="text" class="form-control" formControlName="nombre" [ngClass]="{
+                        'border border-danger': !form.controls.nombre.valid && form.controls.nombre.touched,
+                        'border border-success': form.controls.nombre.valid
+                    }">
+        </div>
+        <div class="alert alert-danger" *ngIf="!form.controls.nombre.valid && form.controls.nombre.touched">
+            <div *ngIf="form.controls.mail.errors.required">El nombre es requerido.</div>
+        </div>
+        <div class="form-group">
+            <label>Cuatrimestre</label>
+            <input type="number" class="form-control" formControlName="cuatrimestre" [ngClass]="{
+                        'border border-danger': !form.controls.cuatrimestre.valid && form.controls.cuatrimestre.touched,
+                        'border border-success': form.controls.cuatrimestre.valid
+                    }">
+        </div>
+        <div class="alert alert-danger" *ngIf="!form.controls.cuatrimestre.valid && form.controls.cuatrimestre.touched">
+            <div *ngIf="form.controls.cuatrimestre.errors.required">El cuatrimestre es requerida.</div>
+            <div *ngIf="form.controls.cuatrimestre.errors.min">El cuatrimestre no debe ser menor que 1.</div>
+        </div>
+        <div class="form-group">
+            <label>Cupos</label>
+            <input type="number" class="form-control" formControlName="cupos" [ngClass]="{
+                        'border border-danger': !form.controls.cupos.valid && form.controls.cupos.touched,
+                        'border border-success': form.controls.cupos.valid
+                    }">
+        </div>
+        <div class="alert alert-danger" *ngIf="!form.controls.cupos.valid && form.controls.cupos.touched">
+            <div *ngIf="form.controls.cupos.errors.required">El cuatrimestre es requerida.</div>
+            <div *ngIf="form.controls.cupos.errors.min">El cuatrimestre no debe ser menor que 1.</div>
+        </div>
+        <div class="form-group">
+            <label>Profesor</label>
+            <select class="form-control" formControlName="profesorCargo" [ngClass]="{
+                        'border border-danger': !form.controls.profesorCargo.valid && form.controls.profesorCargo.touched,
+                        'border border-success': form.controls.profesorCargo.valid
+                    }">
+                <option [ngValue]="profesorA.key" *ngFor="let profesorA of this.profesores">{{profesorA.mail}}
+                </option>
+            </select>
+        </div>
+        <div class="d-flex justify-content-around">
+            <button type="button" class="btn btn-primary" (click)="registrar()"
+                [disabled]="!this.form.valid">Modificar</button>
+            <a routerLinkActive="active" routerLink="/home-admin" class="btn btn-danger">Cancelar</a>
+        </div>
+    </form>
+</div>
